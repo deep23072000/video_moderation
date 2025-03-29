@@ -48,9 +48,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'videos',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',  
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -134,3 +136,16 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+
+# =========================================================
+# Allow frontend (React) to access Django API
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",  # Vite React App
+    "http://127.0.0.1:5173",  # Alternative localhost address
+]
+
+# Allow all methods (GET, POST, PUT, DELETE)
+CORS_ALLOW_METHODS = ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+
+# Allow all headers
+CORS_ALLOW_HEADERS = ["*"]
