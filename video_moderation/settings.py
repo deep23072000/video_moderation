@@ -49,6 +49,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'videos',
     'corsheaders',
+    # ========================work 31-03-2025========
+    'channels', 
+    # ======================== end work 31-03-2025========
+
 ]
 
 MIDDLEWARE = [
@@ -149,3 +153,14 @@ CORS_ALLOW_METHODS = ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
 
 # Allow all headers
 CORS_ALLOW_HEADERS = ["*"]
+
+# =========================31-03-2025================
+ASGI_APPLICATION = "video_moderation.asgi.application"
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer",  # Use Redis for production
+    },
+}
+
+# ====================================================
